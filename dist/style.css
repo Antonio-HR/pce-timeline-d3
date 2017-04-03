@@ -122,7 +122,7 @@ fill: #2695da;
     margin-bottom: 16px;
 }
 #top h1{
-    font-size: 1.5em;
+    font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
@@ -153,6 +153,9 @@ body footer author, body footer address{
 	width: 100%;
 	margin: auto;
 	text-align: center;
+}
+body footer p{
+	text-align:center;	
 }
 
 body footer{
