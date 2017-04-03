@@ -137,7 +137,7 @@ fill: #2695da;
     font-style: italic;
 }
 #texto{
-    width: 50%;
+    width: 65%;
     margin:auto;
     font-family: "Times New Roman", Times, serif;
     margin-bottom: 25px;
@@ -163,29 +163,4 @@ body footer{
 	margin-top:16px;
 }
 
-@media screen and (max-width: 1083px){
 
-    #top{
-    width: 75%;
-    margin: auto;
-    margin-bottom: 16px;
-
-    }
-
-@media screen and (max-width: 883px){
-    body footer{
-	width: 90%;
-}
-	circle.dot{
-	r:30px;
-}	
-	#top h1{
-    font-size: 2em;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-}
-	#texto{
-    width: 75%;
-}
-    
-}
