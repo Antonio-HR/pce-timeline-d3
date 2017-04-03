@@ -131,10 +131,16 @@
                     return _.type === TimelineChart.TYPE.POINT;
                 });
             }).enter();
-
+             function longR(){
+                if (window.innerWidth < 800) {
+                    return 30;
+                }else{
+                    return 15;
+                }
+            }
             var dots = groupDotItems.append('circle').attr('class', withCustom('dot')).attr('cx', function (d) {
                 return x(d.at);
-            }).attr('cy', groupHeight / 2).attr('r', 15).style("stroke","black").style('opacity', .7);
+            }).attr('cy', groupHeight / 2).attr('r', longR()).style("stroke","black").style('opacity', .7);
 
             if (options.tip) {
                 if (d3.tip) {
