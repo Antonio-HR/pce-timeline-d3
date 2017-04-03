@@ -133,7 +133,7 @@
             }).enter();
              function longR(){
                 if (window.innerWidth < 990) {
-                    return 40;
+                    return 30;
                 }else{
                     return 15;
                 }
