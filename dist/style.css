@@ -9,7 +9,6 @@ html, body {
     font-family: Helvetica, Arial;
 }
 body > section {
-    height: 100%;
     width: 100%;
 }
 
