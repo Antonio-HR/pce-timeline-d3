@@ -98,7 +98,7 @@ g[transform="translate(0, 189)"] rect.interval{
 g[transform="translate(0, 283.5)"] rect.interval:nth-child(1), g[transform="translate(0, 283.5)"] rect.interval:nth-child(2){
   fill: #ff6814;
 }
-g[transform="translate(0, 283.5))"] rect.interval:nth-child(3), g[transform="translate(0, 283.5)"] rect.interval:nth-child(5){
+g[transform="translate(0, 283.5)"] rect.interval:nth-child(3), g[transform="translate(0, 283.5)"] rect.interval:nth-child(5){
   fill: #e3051e;
 }
 
