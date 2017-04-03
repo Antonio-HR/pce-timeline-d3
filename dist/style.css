@@ -134,6 +134,10 @@ g[transform="translate(0, 96)"] rect.interval:nth-child(4), g[transform="transla
     margin-bottom: 25px;
 }
 
+#texto p{
+ margin-bottom: 20px;   
+}
+
 @media screen and (max-width: 1083px){
 
     #top{
