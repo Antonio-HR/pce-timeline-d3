@@ -109,7 +109,8 @@ g[transform="translate(0, 96)"] rect.interval:nth-child(4), g[transform="transla
 #top{
     width: 50%;
     margin: auto;
-    margin: 16px 0 16px 0;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 #top h1{
     font-size: 1.5em;
