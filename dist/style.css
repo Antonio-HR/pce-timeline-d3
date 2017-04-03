@@ -121,6 +121,7 @@ g[transform="translate(0, 96)"] rect.interval:nth-child(4), g[transform="transla
     text-align: center;
     display: block;
     font-family: "Times New Roman", Times, serif;
+    margin-top: 16px;
 }
 #top span a{
     font-style: italic;
