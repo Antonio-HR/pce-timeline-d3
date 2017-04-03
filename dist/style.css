@@ -1,0 +1,107 @@
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Helvetica, Arial;
+}
+body > section {
+    height: 100%;
+    width: 100%;
+}
+
+#chart {
+    width: 75%;
+    height: 150px;
+    background: rgb(218, 218, 218);
+    opacity: 0.9;
+    border-radius: 5px;
+    border: 1px solid #2b2b2b;
+}
+
+#chart line {
+    stroke: #2b2b2b;
+}
+
+#chart line.vertical-marker.now {
+    stroke: #c00;
+}
+
+rect.interval.blue-interval {
+    fill: blue;
+    stroke: blue;
+}
+circle.dot{
+    fill:#cc0000;
+    border: 1px solid;
+}
+circle.blue-dot {
+    fill: blue;
+}
+
+/* Override d3tip */
+
+.d3-tip {
+    background: white;
+    color: black;
+    width:25%;
+    border: 1px solid;
+}
+.d3-tip p{
+    font-weight: normal;
+    padding-top: 8px;
+}
+.d3-tip div{
+    font-weight: normal;
+    font-style: italic;
+    padding-top: 8px;
+}
+.d3-tip p span{
+    background-color: #fff263;
+}
+
+/* Tiny Flex Grid */
+
+[flex] {
+    display: flex;
+}
+[flex-fill] {
+    flex: 1;
+}
+[flex-full-center] {
+    align-items: top;
+    justify-content: center;
+}
+[flex-direction=column] {
+    flex-direction: column;
+}
+[flex-direction=row] {
+    flex-direction: row;
+}
+[flex-size="40"] {
+    flex: 40;
+}
+[flex-size="60"] {
+    flex: 60;
+}
+
+g[transform="translate(0, 32)"] rect.interval{
+  fill: #cc0000;
+}
+
+g[transform="translate(0, 64)"] rect.interval{
+  fill: #117A52;
+}
+g[transform="translate(0, 96)"] rect.interval:nth-child(1), g[transform="translate(0, 96)"] rect.interval:nth-child(2){
+  fill: #ff6814;
+}
+g[transform="translate(0, 96)"] rect.interval:nth-child(3), g[transform="translate(0, 96)"] rect.interval:nth-child(5){
+  fill: #e3051e;
+}
+
+g[transform="translate(0, 96)"] rect.interval:nth-child(4), g[transform="translate(0, 96)"] rect.interval:nth-child(6){
+  fill: #2695da;
+}

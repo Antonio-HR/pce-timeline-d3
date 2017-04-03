@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>D3 Timeline Chart</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" />
+    <link rel="stylesheet" href="https://rawgithub.com/Caged/d3-tip/master/examples/example-styles.css" />
+    <link rel="stylesheet" href="dist/timeline-chart.css" />
+    <link rel="stylesheet" href="dist/style.css" />
+    <script src="dist/timeline-chart.js"></script>
+</head>
+
+<body>
+    <section flex flex-full-center>
+        <div id="chart"></div>
+    </section>
+    <button id='plus'onclick="zoomed()">+</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
+    
+
+    <script id="code">
+
+        'use strict';
+
+        const element = document.getElementById('chart');
+        const data = [{
+            label: 'Momentos',
+            data: [{
+            	title:'La matanza de Atocha estremece al mundo',
+            	text:'Tres pistoleros de <span>extrema derecha</span> matan a <span>cinco abogados laboralistas</span> de CCOO, brazo sindical del PCE.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1977,1,24])
+            }, {
+                title:'Elecciones de 1977, los españoles prefieren al PSOE',
+            	text:'En las primeras elecciones democráticas, los españoles de izquierdas toman partido por el <span>PSOE de Felipe González</span>, que logra <span>103 diputados</span> frente a <span>la docena del PCE</span>.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1977, 6, 15])
+            }, {
+                title:'Legalización y abrazo a la rojigualda',
+            	text:'A cambio de la legalización, el PCE abraza la bandera rojigualda y <span>renuncia a la tricolor republicana</span> que había defendido cuarenta años atrás, durante la Guerra Civil.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1977, 4, 9])
+            },{
+                title:'¡Hasta siempre, leninismo!',
+            	text:'El partido había sustituido <span>la obediencia a Moscú por el eurocomunismo</span>, una tendencia que consistía en la defensa del parlamentarismo democrático.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1978, 4, 22])
+            }, {
+                title:'Los alcaldes “del cambio” toman el poder',
+            	text:'En Madrid, <span>Tierno Galván</span>, del PSOE, <span>toma el poder</span> de la alcaldía <span>gracias al apoyo de los comunistas</span>. Lo mismo ocurre con Narcís Serra en Barcelona.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1979, 4 ,3])
+            }, {
+               title:'¡Quieto todo el mundo! Carrillo y Suárez, ni caso…',
+            	text:'<span>Suárez y Carrillo permanecen en su posición</span> mientras las balas impactan contra el techo del Congreso durante su ocupación por el teniente coronel Tejero y el resto de guardias civiles insurrectos.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1981, 2, 23])
+            }, {
+                title:'1982, debacle electoral',
+            	text:'En las elecciones generales de 1982, Felipe González obtiene su primera mayoría absoluta. <span>El PCE</span> de Carrillo <span>obtiene</span> tres escaños, <span>la octava parte de lo conseguido en las anteriores</span> elecciones.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1982, 10, 28])
+                //customClass: 'blue-dot'
+            },{
+               title:'Nace Izquierda Unida tras el “sí a la OTAN”',
+            	text:'Durante la campaña del referéndum de la OTAN, <span>miembros destacados del PCE y del PCPE</span> (Partido Comunista de los Pueblos de España) <span>pactan una coalición</span> para ocupar el espacio que el PSOE estaba dejando a su izquierda.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1986, 4, 29])
+            },{
+               title:'El califa rojo se lanza al poder',
+            	text:'Julio Anguita, el califa rojo, había abandonado la alcaldía de Córdoba para liderar el PCE y su brazo político, Izquierda Unida.En las elecciones generales de octubre, <span>la formación sube de 6 a 14 escaños</span>.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1989, 2, 21])
+            },{
+               title:'Maastricht divide Izquierda Unida',
+            	text:'La ratificación del tratado que profundizaba en la <span>unión financiera de Europa</span> causa una profunda división en el seno de IU. <p>En la votación parlamentaria, <span>el sector duro próximo al PCE</span> de Anguita <span>se abstiene</span>, mientras que la parte más reformista del partido, encabezada por Nicolás Sartorius, vota "sí".</p>',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1992, 10, 29])
+            },{
+               title:'La pinza beneficia a Aznar',
+            	text:'A principios de los noventa se instalan dos conceptos: el sorpasso y la pinza. <p>El primero hace alusión al objetivo supremo de la IU de Anguita, <span>superar electoralmente al PSOE</span>.Anguita <span>no lo consigue</span>, pero IU toca su techo histórico con <span>19 diputados en el Parlamento</span>.</p>',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([1996, 3, 3])
+            },{
+               title:'Anguita abandona el barco, Llamazares agarra el timón',
+            	text:'Anguita deja la secretaría general del PCE en 1998 debido a problemas cardiovasculares. Hará lo mismo con la coordinación de IU, dos años después.<p> Le sustituye Gaspar Llamazares, que proviene de la federación asturiana.<span>Llamazares se apoyará en el PSOE</span>.</p>',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([2000, 10, 29])
+            },{
+               title:'Del “no a la OTAN” al “no a la guerra”',
+            	text:'Izquierda Unida se moviliza junto al PSOE para <span>frenar la intervención de España en la Guerra de Irak</span>. <p>Las plataformas convocantes consiguen juntar a dos millones de personas en la Puerta del Sol, aunque según la Policía, fueron 650.000.</p>',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([2003, 2, 15])
+            },{
+               title:'Con la crisis, comienza el liderazgo de Cayo Lara',
+            	text:'Tras el estallido de la burbuja inmobiliaria, <span>Cayo Lara sustituye a Llamazares</span> con dos premisas: “Acabar con las disputas internas” y estar con la gente en las manifestaciones para “hacer entender a los sindicatos que hay que cambiar de rumbo”.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([2008, 12, 14])
+            },{
+               title:'Surge Podemos, rejuvenece IU',
+            	text:'En la primavera de 2014, ex asesores de IU, miembros de Izquierda Anticapitalista y gente cercana al movimiento 15-M crean Podemos.</p><p>Izquierda Unida mueve ficha y <span>Alberto Garzón</span> se convierte en el <span>aspirante a conquistar la Moncloa</span> en las siguientes elecciones.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([2015, 1, 23])
+            },{
+               title:'El renacimiento de las “alcaldías del cambio”',
+            	text:'<span>IU, Podemos</span> y otras organizaciones comienzan a crear <span>candidaturas conjuntas</span> para las elecciones municipales. <p>En Madrid, la ex abogada laboralista de CCOO que se salvó por los pelos en el atentado de Atocha, Manuela Carmena, ahora es alcaldesa gracias al apoyo de los socialistas.</p>',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([2015, 5, 24])
+            },{
+               title:'Si fuimos juntos en las municipales… ¿Por qué no en las generales?',
+            	text:'Pablo Iglesias, <span>militante de las Juventudes Comunistas en su adolescencia</span> acuerda con Alberto Garzón <span>unir Podemos e Izquierda Unida</span> bajo la marca Unidos Podemos.</p><p> Los morados quedan en tercer lugar, por debajo del PSOE, que salva los muebles gracias a sus cuatro millones y medio de votos.',
+                type: TimelineChart.TYPE.POINT,
+                at: new Date([2016, 6, 26])
+            },]
+        }, {
+            label: 'secretario general - PCE',
+            data: [{
+                label: 'Santiago Carrillo',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1977, 4, 9]),
+                to: new Date([1982, 12, 10]),
+            },{
+                label: 'Gerardo Iglesias',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1982, 12, 10]),
+                to: new Date([1988, 2, 21]),
+            },{
+                label: 'Julio Anguita',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1988, 2, 21]),
+                to: new Date([1998, 12, 7]),
+            },{
+                label: 'Francisco Frutos',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1998, 12, 7]),
+                to: new Date([2009, 11, 8]),
+            },{
+                label: 'Jose Luis Centella',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([2009, 11, 8]),
+                to: new Date([2016, 6, 26]),
+            }]
+        }, {
+            label: 'secretario general - IU',
+            data: [{
+                label: 'Gerardo Iglesias',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1986, 4, 29]),
+                to: new Date([1989, 2, 21])
+            }, {
+                label: 'Julio Anguita',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1989, 2, 21]),
+                to: new Date([2000, 10, 29])
+            },
+            {
+                label: 'Gaspar Llamazares',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([2000, 10, 29]),
+                to:  new Date([2008, 12, 14])
+            },{
+                label: 'Cayo Lara',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([2008, 12, 14]),
+                to:  new Date([2016, 6, 4])
+            },{
+                label: 'Alberto Garzón',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([2016, 6, 4]),
+                to:  new Date([2016, 6, 26])
+            }]
+        }, {
+            label: 'presidente del gobierno',
+            data: [{
+                label: 'Adolfo Suárez',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1976, 7, 3]),
+                to: new Date([1981, 2, 25])
+            }, {
+                label: 'Leopoldo Calvo Sotelo',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1981, 2, 25]),
+                to: new Date([1982, 12, 1])
+            },
+            {
+                label: 'Felipe González',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1982, 12, 1]),
+                to:  new Date([1996, 3, 4])
+            },{
+                label: 'José María Aznar',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([1996, 5, 4]),
+                to:  new Date([2004, 3, 15])
+            },{
+                label: 'José Luis Rodríguez Zapatero',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([2004, 4, 16]),
+                to:  new Date([2011, 11, 21])
+            },{
+                label: 'Mariano Rajoy',
+                type: TimelineChart.TYPE.INTERVAL,
+                from: new Date([2011, 12, 20]),
+                to:  new Date([2016, 6, 26])
+            }]
+        }];
+        function main(){
+        const timeline = new TimelineChart(element, data, {
+            enableLiveTimer: true,
+            tip: function(d) {
+                return '<h2>'+d.title+'</h2>'+ 
+                '<p>'+d.text+'</p>'+
+                '<div>'+d.at.getDate()+'/'+(1 + d.at.getMonth())+'/'+d.at.getFullYear()+'</div>';//d.at || `${d.from}<br>${d.to}`;
+            }
+        }).onVizChange(e => console.log(e));
+        
+        }
+        window.onload = main;
+
+    </script>
+
+</body>
+
+</html>
