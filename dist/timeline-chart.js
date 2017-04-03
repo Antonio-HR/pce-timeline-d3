@@ -134,7 +134,7 @@
 
             var dots = groupDotItems.append('circle').attr('class', withCustom('dot')).attr('cx', function (d) {
                 return x(d.at);
-            }).attr('cy', groupHeight / 2).attr('r', 15).style("stroke","black").style('opacity', .7);
+            }).attr('cy', groupHeight / 2).attr('r', ).style("stroke","black").style('opacity', .7);
 
             if (options.tip) {
                 if (d3.tip) {
