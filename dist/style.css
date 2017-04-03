@@ -126,6 +126,10 @@ g[transform="translate(0, 96)"] rect.interval:nth-child(4), g[transform="transla
 #top span a{
     font-style: italic;
 }
+#texto{
+    width: 50%;
+    margin:auto;
+}
 
 @media screen and (max-width: 1083px){
 
