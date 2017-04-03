@@ -132,7 +132,7 @@
                 });
             }).enter();
              function longR(){
-                if (window.innerWidth < 800) {
+                if (window.innerWidth < 990) {
                     return 30;
                 }else{
                     return 15;
