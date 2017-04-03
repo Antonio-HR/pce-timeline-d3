@@ -169,5 +169,10 @@ body footer{
 	circle.dot{
 	r:30px;
 }
+	#top h1{
+    font-size: 3em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
     
 }
