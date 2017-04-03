@@ -37,9 +37,7 @@ circle.dot{
     fill:#cc0000;
     border: 1px solid;
 }
-circle.dot{
-	r:40px;
-}
+
 circle.blue-dot {
     fill: blue;
 }
@@ -167,6 +165,9 @@ body footer{
 @media screen and (max-width: 883px){
     body footer{
 	width: 90%;
+}
+	circle.dot{
+	r:40px;
 }
     
 }
