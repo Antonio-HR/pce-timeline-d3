@@ -72,7 +72,7 @@ circle.blue-dot {
     flex: 1;
 }
 [flex-full-center] {
-    align-items: center;
+   /* align-items: center;*/
     justify-content: center;
 }
 [flex-direction=column] {
