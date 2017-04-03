@@ -92,17 +92,17 @@ g[transform="translate(0, 94.5)"] rect.interval, g[transform="translate(0, 189)"
   fill: #cc0000;
 }
 
-g[transform="translate(0, 189)"] rect.interval{
+g[transform="translate(0, 69.5)"] rect.interval{
   fill: #117A52;
 }
-g[transform="translate(0, 283.5)"] rect.interval:nth-child(1), g[transform="translate(0, 283.5)"] rect.interval:nth-child(2){
+g[transform="translate(0, 139)"] rect.interval:nth-child(1), g[transform="translate(0, 139)"] rect.interval:nth-child(2){
   fill: #ff6814;
 }
-g[transform="translate(0, 283.5)"] rect.interval:nth-child(3), g[transform="translate(0, 283.5)"] rect.interval:nth-child(5){
+g[transform="translate(0, 208.5)"] rect.interval:nth-child(3), g[transform="translate(0, 208.5)"] rect.interval:nth-child(5){
   fill: #e3051e;
 }
 
-g[transform="translate(0, 283.5)"] rect.interval:nth-child(4), g[transform="translate(0, 283.5)"] rect.interval:nth-child(6){
+g[transform="translate(0, 208.5)"] rect.interval:nth-child(4), g[transform="translate(0, 208.5)"] rect.interval:nth-child(6){
   fill: #2695da;
 }
 
